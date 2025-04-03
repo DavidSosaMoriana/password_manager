@@ -28,11 +28,11 @@ export function RepeatedPasswordsChart(props: RepeatedPasswordsChartProps) {
   const chartConfig = {
     unique: {
       label: "unique",
-      color: "hsl(var(--chart-1))",
+      color: "hsl(var(--chart-3))",
     },
     repeated: {
       label: "repeated",
-      color: "hsl(var(--chart-2))",
+      color: "hsl(var(--chart-4))",
     },
   } satisfies ChartConfig;
 
@@ -87,12 +87,12 @@ export function RepeatedPasswordsChart(props: RepeatedPasswordsChartProps) {
               dataKey="unique"
               stackId="a"
               cornerRadius={5}
-              fill="var(--color-unique)"
+              fill={chartConfig.unique.color}
               className="stroke-transparent stroke-2"
             />
             <RadialBar
               dataKey="repeated"
-              fill="var(--color-repeated)"
+              fill={chartConfig.repeated.color}
               stackId="a"
               cornerRadius={5}
               className="stroke-transparent stroke-2"

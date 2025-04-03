@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import { countPasswords } from "@/lib/countPasswords";
 import { RepeatedPasswordsChart } from "./components/RepeatedPasswordsCharts";
-
+import { TrafficDevice } from "./components/TrafficDevice/TrafficDevice";
 
 export default async function AnalyticsPage() {
   const session = await getServerSession();
@@ -33,14 +33,12 @@ export default async function AnalyticsPage() {
 
   const { unique, repeated } = countPasswords(user.elements);
 
-
   return (
     <div>
       <div className="grid md:grid-cols-2 gap-5 mb-4">
-       <RepeatedPasswordsChart repeated={repeated} unique={unique} />
-        block 2
+        <RepeatedPasswordsChart repeated={repeated} unique={unique} />
+        <TrafficDevice />
       </div>
-     block 3
     </div>
   );
 }
