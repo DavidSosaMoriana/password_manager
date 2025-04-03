@@ -6,13 +6,13 @@ import { redirect } from "next/navigation";
 export default async function ElementPage({
   params,
 }: {
-  params: { elementId: string };
+  params: Promise<{ elementId: string }>;
 }) {
   // In Next.js 15, params is now a promise that needs to be awaited
   // Change this line:
   // const { elementId } = params;
   // To this:
-  const elementId = await params.elementId;
+  const { elementId } = await params;
   // Or alternatively: const { elementId } = await params;
 
   const session = await getServerSession();

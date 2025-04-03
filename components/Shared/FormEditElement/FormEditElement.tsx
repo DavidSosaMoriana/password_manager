@@ -59,7 +59,7 @@ export function FormEditElement(props: FormEditElementProps) {
 
       router.push("/");
     } catch (error) {
-      // Usar el toast de error personalizado
+      console.error("Error occurred:", error);
       showErrorToast("Error al guardar el elemento");
     }
   };

@@ -68,7 +68,7 @@ export function FormAddElement(props: FormAddElementProps) {
       closeDialog();
       router.refresh();
     } catch (error) {
-      // Usar el toast de error personalizado
+      console.error("Error occurred:", error);
       showErrorToast("Error al guardar el elemento");
     }
   };
