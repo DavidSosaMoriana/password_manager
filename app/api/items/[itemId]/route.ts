@@ -1,12 +1,13 @@
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
-  req: Request,
-  { params }: { params: { itemId: string } }
+  req: NextRequest
 ) {
   try {
-    const { itemId } = params;
+    const url = new URL(req.url);
+    const pathSegments = url.pathname.split('/');
+    const itemId = pathSegments[pathSegments.length - 1];
     const values = await req.json();
 
     if (!itemId) {
@@ -28,6 +29,6 @@ export async function PATCH(
     return NextResponse.json(element);
   } catch (error) {
     console.log(error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json({ error: "Internal Error" }, { status: 500 });
   }
 }
