@@ -1,16 +1,4 @@
 {
   "version": 2,
-  "installCommand": "npm install && npx prisma generate",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "installCommand": "npm install && npx prisma generate"
 }
