@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "installCommand": "npm install && npx prisma generate",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ]
+}
+
