@@ -9,7 +9,11 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    // Ensure that images in public folder are correctly loaded
+    unoptimized: true,
   },
+  // Add output configuration for static optimization
+  output: 'standalone',
 };
 
 export default nextConfig;

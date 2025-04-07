@@ -1,5 +1,16 @@
+import Image from 'next/image';
+
 export function ImageAuth() {
   return (
-    <div className="bg-[url('/images/login3.jpg')] bg-no-repeat bg-cover bg-center" />
+    <div className="relative w-full h-full">
+      {/* Use Next.js Image component for optimized loading */}
+      <Image 
+        src="/images/login3.jpg"
+        alt="Login background"
+        fill
+        style={{ objectFit: 'cover' }}
+        priority
+      />
+    </div>
   );
 }

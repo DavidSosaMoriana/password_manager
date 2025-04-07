@@ -35,17 +35,27 @@ export function LoginForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const response = await signIn("credentials", {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-    });
+    try {
+      const response = await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+      });
 
-    if (response?.status === 200) {
-      showSuccessToast("Login successfull! ✌🏽");
-      router.push("/");
-    } else {
-      showErrorToast("There was an error with your account");
+      if (response?.ok) {
+        showSuccessToast("Login successful! ✌🏽");
+        router.push("/");
+      } else {
+        // More specific error handling
+        if (response?.status === 401) {
+          showErrorToast("Invalid email or password");
+        } else {
+          showErrorToast(`Authentication error: ${response?.error || "Unknown error"}`);
+        }
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      showErrorToast("There was an error trying to log in");
     }
   };
 
