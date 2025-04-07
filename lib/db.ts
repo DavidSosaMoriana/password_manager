@@ -20,7 +20,7 @@ function getPrismaClient() {
     return client;
   } catch (error) {
     console.error("Failed to initialize Prisma Client:", error);
-    throw new Error(`Database connection failed: ${error.message}`);
+    throw new Error(`Database connection failed: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
